@@ -8,11 +8,12 @@ function setCookie(name, value, days) {
 
 // Function to get a cookie by name
 function getCookie(name) {
-  const cookies = document.cookie.split('; ');
-  for (const cookie of cookies) {
-    const [cookieName, cookieValue] = cookie.split('=');
-    if (cookieName === name) {
-      return cookieValue;
+  const cookieName = name + "=";
+  const cookies = document.cookie.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+    let cookie = cookies[i].trim();
+    if (cookie.indexOf(cookieName) === 0) {
+      return cookie.substring(cookieName.length, cookie.length);
     }
   }
   return null;
@@ -37,7 +38,7 @@ function applyUserPreferences() {
 document.getElementById("preferences-form").addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const fontsizeValue = document.getElementById("fontsize").value;
+  const fontsizeValue = document.getElementById("fontsize").value + "px";
   const fontcolorValue = document.getElementById("fontcolor").value;
 
   // Set the cookie with user preferences
