@@ -25,7 +25,7 @@ function applyUserPreferences() {
 
   if (fontsize) {
     document.documentElement.style.setProperty("--fontsize", fontsize);
-    document.getElementById("fontsize").value = fontsize.replace("px", "");
+    document.getElementById("fontsize").value = fontsize;
   }
   if (fontcolor) {
     document.documentElement.style.setProperty("--fontcolor", fontcolor);
@@ -37,7 +37,7 @@ function applyUserPreferences() {
 document.getElementById("preferences-form").addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const fontsizeValue = document.getElementById("fontsize").value + "px";
+  const fontsizeValue = document.getElementById("fontsize").value;
   const fontcolorValue = document.getElementById("fontcolor").value;
 
   // Set the cookie with user preferences
